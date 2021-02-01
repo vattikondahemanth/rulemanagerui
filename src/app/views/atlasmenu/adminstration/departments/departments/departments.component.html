@@ -1,0 +1,72 @@
+
+
+<div class="col-lg-12">
+    <a routerLink="/atlasmenu/departmentsaddedit" [queryParams]="{ Id: 0 }" routerLinkActive="active" class="icon-user icons font-1xl d-block mt-2"style=" margin: 5px;
+    padding: 5px;">Add New Item  </a>
+
+</div>
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> Department Table
+        </div>
+        <div class="card-body">
+          <table class="table">
+            <thead>
+              <tr>
+               <th>Name</th>
+                <th>Manager</th>
+                <th>SendAnniversary</th>
+                <th>Status</th>
+                <th>Chnage Status</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+             
+                <!-- <tr *ngFor="let dept of pagedItems"> -->
+                  <tr *ngFor="let dept of allemployee">
+                    <td>{{dept.Name}}</td>
+                    <td>{{dept.ManagerName}}</td>
+                    <td *ngIf="dept.SendAnniversaryMail;else other_content">Yes</td>
+                    <ng-template #other_content>No</ng-template>
+                    <td >{{dept.Status}}</td>
+                   
+                    <td (click)="ToggleIsActive(dept.Id)"><span class="badge badge-success">Change Status</span></td>
+                    <!-- <td class="c-icon c-icon-2xl mt-5 cui-check" (click)="ToggleIsActive(dept.Id)"></td> -->
+                    <td>
+                      <a  class="c-icon c-icon-5xl mt-5 cui-pencil" (click)="EditDepartment(dept.Id)"></a>
+                     </td>
+                    <td> <a class="c-icon c-icon-5xl mt-5 cui-trash" (click)="RemoveDepartment(dept.Id)"></a></td>
+                  </tr>
+            </tbody>
+          </table>
+          <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+            <li [ngClass]="{disabled:pager.currentPage === 1}" class="page-item">
+                <a (click)="mysetPage(1)" class="page-link">First</a>
+            </li>
+            <li [ngClass]="{disabled:pager.currentPage === 1}" class="page-item">
+                <a (click)="mysetPage(pager.currentPage - 1)" class="page-link">Previous</a>
+            </li>
+            <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" class="page-item">
+                <a (click)="mysetPage(page)" class="page-link">{{page}}</a>
+            </li>
+            <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="page-item">
+                <a (click)="mysetPage(pager.currentPage + 1)" class="page-link">Next</a>
+            </li>
+            <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="page-item">
+                <a (click)="mysetPage(pager.totalPages)" class="page-link">Last</a>
+            </li>
+        </ul>
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+    
+  
+  </div>
+</div>
+

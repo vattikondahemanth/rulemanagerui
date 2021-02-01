@@ -1,0 +1,47 @@
+<form [formGroup]="departmentform" (ngSubmit)="SaveDepartment(departmentform.value)">
+<div class="row">
+<div class="col-sm-6">
+    <div class="card">
+      <div class="card-header">
+        <strong>Department </strong>
+        <small>Form</small>
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label for="Department">Department</label>
+          <input type="hidden" name="deptId" formControlName="deptId" >
+          <input type="hidden" name="IsActive" formControlName="IsActive">
+          <input type="text" formControlName="Name" class="form-control" id="Name" placeholder="Department ">
+        </div>
+        <div class="form-group">
+            <label for="SendAnniversaryMail">SendAnniversaryMail</label>
+          <input type="checkbox" formControlName="SendAnniversaryMail"  value="option1" id="checkbox1">
+        </div>
+        <div class="form-group"  >
+          <label for="street">Manager</label>
+          <select class="form-control"  id="Id" formControlName="Id" >  
+            <option *ngFor="let emp of allemployee" value={{emp.Id}}>{{emp.Name}} </option>  
+        </select> 
+          <!-- <input type="text" formControlName="ManagerId"  class="form-control" id="ManagerId" placeholder="Manager Name"> -->
+        </div>
+        <div class="row">
+          <div class="form-group col-sm-8">
+            <label for="city">Status</label>
+            <input type="text" class="form-control" id="Status" formControlName="Status" placeholder="Status">
+          </div>
+          <div class="form-group col-sm-4">
+            
+          </div>
+        </div><!--/.row-->
+        <div class="card-footer">
+            <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>{{btnname}}</button>
+            <button type="reset" class="btn btn-sm btn-success" (click)="AddClick($event)" [disabled]="isDisabled"><i class="fa fa-dot-circle-o"></i>Add More</button>
+            <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
+          </div>
+      </div>
+    </div>
+  </div><!--/.col-->
+  <div class="col-sm-6"></div>
+</div><!--/.row-->
+</form>
+

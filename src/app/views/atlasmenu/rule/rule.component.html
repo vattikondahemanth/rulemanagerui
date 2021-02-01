@@ -1,0 +1,81 @@
+
+
+<div class="col-lg-12">
+    <a  class="icon-user icons font-1xl d-block mt-2"style=" margin: 5px;
+    padding: 5px;">Add New Item  </a>
+
+</div>
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> Rule Table
+        </div>
+        <div class="card-body">
+          <table class="table">
+            <thead>
+              <tr>
+               <th>RuleId</th>
+                <th>OriginalRuleId</th>
+                <th>Name</th>
+                <th>Actions</th>
+                <th>Folder_name</th>
+                <th>Precedence</th>
+                <th>Conditions</th>
+                <th>StopProcessing</th>
+                <th>IsActive</th>
+                <th>RuleType</th>
+                <th>ServiceName</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+             
+                <!-- <tr *ngFor="let dept of pagedItems"> -->
+                  <tr *ngFor="let rule of allrule">
+                    <td>{{rule.ruleId}}</td>
+                    <td>{{rule.originalRuleId}}</td>
+                    <td>{{rule.name}}</td>
+                    <td>{{rule.actions}}</td>
+                    <td>{{rule.folder_name}}</td>
+                    <td>{{rule.precedence}}</td>
+                    <td>{{rule.conditions}}</td>
+                    <td>{{rule.stopProcessing}}</td>
+                    <td>{{rule.isActive}}</td>
+                    <td>{{rule.ruleType}}</td>
+                    <td>{{rule.serviceName}}</td>
+                     <td>
+                      <a  class="c-icon c-icon-5xl mt-5 cui-pencil" (click)="EditRule(rule.ruleId,rule.id)"></a>
+                     </td>
+                    <td> <a class="c-icon c-icon-5xl mt-5 cui-trash" (click)="RemoveDepartment(dept.Id)"></a></td>
+                  </tr>
+            </tbody>
+          </table>
+          <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+            <li [ngClass]="{disabled:pager.currentPage === 1}" class="page-item">
+                <a (click)="mysetPage(1)" class="page-link">First</a>
+            </li>
+            <li [ngClass]="{disabled:pager.currentPage === 1}" class="page-item">
+                <a (click)="mysetPage(pager.currentPage - 1)" class="page-link">Previous</a>
+            </li>
+            <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" class="page-item">
+                <a (click)="mysetPage(page)" class="page-link">{{page}}</a>
+            </li>
+            <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="page-item">
+                <a (click)="mysetPage(pager.currentPage + 1)" class="page-link">Next</a>
+            </li>
+            <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="page-item">
+                <a (click)="mysetPage(pager.totalPages)" class="page-link">Last</a>
+            </li>
+        </ul>
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+    
+  
+  </div>
+</div>
+
